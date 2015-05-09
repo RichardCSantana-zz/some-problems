@@ -64,4 +64,14 @@ public class StreamTester {
 		}
 	}
 
+	/**
+	 * Test a char array with one char
+	 */
+	@Test
+	public void oneCharCase() {
+		Stream stream = new StreamMock("a");
+		Character firstChar = StreamReader.firstChar(stream);
+		Assert.assertEquals(new Character('a'), firstChar);
+	}
+
 }

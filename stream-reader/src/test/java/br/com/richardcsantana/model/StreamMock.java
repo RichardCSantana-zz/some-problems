@@ -42,7 +42,7 @@ public class StreamMock implements Stream {
 	 * @see netshoes.Stream#hasNext()
 	 */
 	public boolean hasNext() {
-		return pointer < charsArray.length - 1;
+		return pointer < charsArray.length;
 	}
 
 }

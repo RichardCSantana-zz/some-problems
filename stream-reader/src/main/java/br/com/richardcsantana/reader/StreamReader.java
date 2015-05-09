@@ -31,6 +31,10 @@ public class StreamReader {
 				chars.add(actual);
 			}
 		}
+		if (chars.isEmpty()) {
+			throw new IllegalArgumentException(
+					"This method expect at least one char that doesn't repeat");
+		}
 		return chars.get(0);
 	}
 

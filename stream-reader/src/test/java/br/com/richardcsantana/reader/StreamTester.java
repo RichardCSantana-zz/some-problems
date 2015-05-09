@@ -28,16 +28,40 @@ public class StreamTester {
 	@Test(expected = IllegalArgumentException.class)
 	public void allRepeatCase() {
 		Stream stream = new StreamMock("aABABa");
-		StreamReader.firstChar(stream);
+		try {
+			StreamReader.firstChar(stream);
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals(
+					"This method expect at least one char that doesn't repeat",
+					e.getMessage());
+			throw e;
+		}
 	}
-	
+
 	/**
-	 * Test a char array with three equals chars 
+	 * Test a char array with three equals chars
+	 */
+	@Test
+	public void threeEqualsCharsCase() {
+		Stream stream = new StreamMock("aABABaac");
+		Character firstChar = StreamReader.firstChar(stream);
+		Assert.assertEquals(new Character('c'), firstChar);
+	}
+
+	/**
+	 * Test a empty char array
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void threeEqualsCharsCase() {
-		Stream stream = new StreamMock("aABABaa");
-		StreamReader.firstChar(stream);
+	public void emptyCharArrayCase() {
+		Stream stream = new StreamMock("");
+		try {
+			StreamReader.firstChar(stream);
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals(
+					"The stream must contain at least one char for this method",
+					e.getMessage());
+			throw e;
+		}
 	}
 
 }

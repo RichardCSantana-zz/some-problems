@@ -24,6 +24,10 @@ public class StreamReader {
 	public static char firstChar(Stream input) {
 		List<Character> chars = new ArrayList<>();
 		List<Character> occurs = new ArrayList<>();
+		if (!input.hasNext()) {
+			throw new IllegalArgumentException(
+					"The stream must contain at least one char for this method");
+		}
 		while (input.hasNext()) {
 			Character actual = input.getNext();
 			if (occurs.contains(actual)) {

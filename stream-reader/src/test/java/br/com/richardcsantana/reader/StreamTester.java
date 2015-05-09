@@ -30,5 +30,14 @@ public class StreamTester {
 		Stream stream = new StreamMock("aABABa");
 		StreamReader.firstChar(stream);
 	}
+	
+	/**
+	 * Test a char array with three equals chars 
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void threeEqualsCharsCase() {
+		Stream stream = new StreamMock("aABABaa");
+		StreamReader.firstChar(stream);
+	}
 
 }

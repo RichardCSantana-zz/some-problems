@@ -65,13 +65,29 @@ public class StreamTester {
 	}
 
 	/**
-	 * Test a char array with one char
+	 * Test a char array with only one char
 	 */
 	@Test
 	public void oneCharCase() {
 		Stream stream = new StreamMock("a");
 		Character firstChar = StreamReader.firstChar(stream);
 		Assert.assertEquals(new Character('a'), firstChar);
+	}
+
+	/**
+	 * Test a char array with only one char repeated
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void sameCharAllStreamCase() {
+		Stream stream = new StreamMock("aaaaaaaaaaaaaaaaaaaaaa");
+		try {
+			StreamReader.firstChar(stream);
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals(
+					"This method expect at least one char that doesn't repeat",
+					e.getMessage());
+			throw e;
+		}
 	}
 
 }

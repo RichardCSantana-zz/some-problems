@@ -23,12 +23,14 @@ public class StreamReader {
 	 */
 	public static char firstChar(Stream input) {
 		List<Character> chars = new ArrayList<>();
+		List<Character> occurs = new ArrayList<>();
 		while (input.hasNext()) {
 			Character actual = input.getNext();
-			if (chars.contains(actual)) {
+			if (occurs.contains(actual)) {
 				chars.remove(actual);
 			} else {
 				chars.add(actual);
+				occurs.add(actual);
 			}
 		}
 		if (chars.isEmpty()) {

@@ -22,4 +22,13 @@ public class StreamTester {
 		Assert.assertEquals(new Character('b'), firstChar);
 	}
 
+	/**
+	 * Test a char array with no chars that doesn't repeat
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void allRepeatCase() {
+		Stream stream = new StreamMock("aABABa");
+		StreamReader.firstChar(stream);
+	}
+
 }

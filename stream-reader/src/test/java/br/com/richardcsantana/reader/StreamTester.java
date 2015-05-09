@@ -6,6 +6,10 @@ import org.junit.Test;
 import br.com.richardcsantana.model.Stream;
 import br.com.richardcsantana.model.StreamMock;
 
+/**
+ * @author richard
+ *
+ */
 public class StreamTester {
 
 	/**

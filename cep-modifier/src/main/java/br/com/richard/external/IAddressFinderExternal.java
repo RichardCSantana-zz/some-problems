@@ -9,7 +9,7 @@ import br.com.richard.model.Address;
  * @author richard
  *
  */
-public interface IAddressFinder {
+public interface IAddressFinderExternal {
 
 	Address getAddressByCEP(String cep);
 

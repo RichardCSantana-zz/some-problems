@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import br.com.richard.external.IAddressFinderExternal;
+import br.com.richard.external.IExternalAddressFinder;
 import br.com.richard.model.Address;
 
 /**
@@ -25,8 +25,8 @@ public class AddressFinderTest {
 	public void normalCase() {
 		Address expected = new Address("rua", "bairro", "cidade", "estado",
 				"01234567");
-		IAddressFinderExternal addressFinder = Mockito
-				.mock(IAddressFinderExternal.class);
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
 		Mockito.when(addressFinder.getAddressByCEP("01234567")).thenReturn(
 				expected);
 		AddressFinder afs = new AddressFinder(addressFinder);

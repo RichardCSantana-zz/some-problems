@@ -3,6 +3,9 @@
  */
 package br.com.richard.business;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import br.com.richard.external.IExternalAddressFinder;
 import br.com.richard.model.Address;
 
@@ -23,6 +26,9 @@ public class AddressFinder implements IAddressFinder {
 
 	@Override
 	public Address findByCEP(String cep) {
+		if (!isValid(cep)) {
+			throw new IllegalArgumentException("CEP inválido");
+		}
 		Address result = null;
 		Integer iteration = 0;
 		do {
@@ -37,6 +43,16 @@ public class AddressFinder implements IAddressFinder {
 			}
 		} while (result == null);
 		return result;
+	}
+
+	private boolean isValid(String cep) {
+		if (cep == null || cep.length() != 8) {
+			return false;
+		} else {
+			Pattern pattern = Pattern.compile("\\d{8}");
+			Matcher matcher = pattern.matcher(cep);
+			return matcher.find();
+		}
 	}
 
 	private String reviseCEP(String cep, Integer iteration) {

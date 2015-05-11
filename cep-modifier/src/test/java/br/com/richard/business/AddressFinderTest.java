@@ -29,7 +29,7 @@ public class AddressFinderTest {
 				.mock(IExternalAddressFinder.class);
 		Mockito.when(addressFinder.getAddressByCEP("01234567")).thenReturn(
 				expected);
-		AddressFinder afs = new AddressFinder(addressFinder);
+		IAddressFinder afs = new AddressFinder(addressFinder);
 		Address actual = afs.findByCEP("01234567");
 		Assert.assertEquals(expected, actual);
 	}

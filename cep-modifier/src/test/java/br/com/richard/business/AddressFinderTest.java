@@ -23,12 +23,25 @@ public class AddressFinderTest {
 	 */
 	@Test
 	public void normalCase() {
-		Address expected = new Address("rua", "bairro", "cidade", "estado",
-				"01234567");
+		final String cep = "01234567";
+		final Address expected = new Address("rua", "bairro", "cidade",
+				"estado", cep);
 		IExternalAddressFinder addressFinder = Mockito
 				.mock(IExternalAddressFinder.class);
-		Mockito.when(addressFinder.getAddressByCEP("01234567")).thenReturn(
-				expected);
+		Mockito.when(addressFinder.getAddressByCEP(cep)).thenReturn(expected);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		Address actual = afs.findByCEP(cep);
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void oneTurnCase() {
+		final String cep = "01234560";
+		final Address expected = new Address("rua", "bairro", "cidade",
+				"estado", cep);
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		Mockito.when(addressFinder.getAddressByCEP(cep)).thenReturn(expected);
 		IAddressFinder afs = new AddressFinder(addressFinder);
 		Address actual = afs.findByCEP("01234567");
 		Assert.assertEquals(expected, actual);

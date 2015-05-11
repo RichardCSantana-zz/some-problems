@@ -68,4 +68,57 @@ public class AddressFinderTest {
 			throw e;
 		}
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void nullCEPCase() {
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		try {
+			afs.findByCEP(null);
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals("CEP inválido", e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void lenghtSmallerThanEightCase() {
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		try {
+			afs.findByCEP("0123456");
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals("CEP inválido", e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void lenghtBiggerThanEightCase() {
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		try {
+			afs.findByCEP("012345678");
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals("CEP inválido", e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void nonNumericAlCase() {
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		try {
+			afs.findByCEP("01s34567");
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals("CEP inválido", e.getMessage());
+			throw e;
+		}
+	}
+
 }

@@ -24,12 +24,16 @@ public class AddressFinder implements IAddressFinder {
 	@Override
 	public Address findByCEP(String cep) {
 		Address result = null;
-		Integer iteration = 1;
+		Integer iteration = 0;
 		do {
 			result = addressFinder.getAddressByCEP(cep);
 			if (result == null) {
-				cep = reviseCEP(cep, iteration);
 				iteration++;
+				cep = reviseCEP(cep, iteration);
+			}
+			if (iteration == 8) {
+				throw new IllegalArgumentException(
+						"Nenhum endereço com esse cep foi encontrado");
 			}
 		} while (result == null);
 		return result;

@@ -3,12 +3,21 @@
  */
 package br.com.richard.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * @author vrx_rsantana
  *
  */
-public class AddressConsumed {
+@Entity
+public class Address {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String street;
 	private String neighborhood;
 	private String city;
@@ -16,6 +25,24 @@ public class AddressConsumed {
 	private String zipcode;
 
 	public Address() {
+
+	}
+
+	public Address(String street, String neighborhood, String city,
+			String state, String zipcode) {
+		this.street = street;
+		this.neighborhood = neighborhood;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getStreet() {

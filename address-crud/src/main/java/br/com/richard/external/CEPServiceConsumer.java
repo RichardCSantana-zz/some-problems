@@ -17,7 +17,7 @@ public class CEPServiceConsumer {
 	public AddressConsumed getAddressByCEP(String cep) {
 		RestTemplate restTemplate = new RestTemplate();
 		Map<String, String> cep = new HashMap<>();
-		cep.put("cep", "07132322");
+		cep.put("cep", cep);
 		AddressConsumed address = restTemplate.postForObject(
 				"http://localhost:8080/buscacep", AddressConsumed.class, cep);
 	}

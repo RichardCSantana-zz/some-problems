@@ -20,5 +20,6 @@ public class CEPServiceConsumer {
 		cep.put("cep", cep);
 		AddressConsumed address = restTemplate.postForObject(
 				"http://localhost:8080/buscacep", AddressConsumed.class, cep);
+		return address;
 	}
 }

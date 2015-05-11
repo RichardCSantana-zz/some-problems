@@ -6,13 +6,17 @@ package br.com.richard.business;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
+
 import br.com.richard.external.IExternalAddressFinder;
+import br.com.richard.external.mock.ExternalAddressFinderMock;
 import br.com.richard.model.Address;
 
 /**
  * @author richard
  *
  */
+@Component
 public class AddressFinder implements IAddressFinder {
 
 	private IExternalAddressFinder addressFinder;
@@ -22,6 +26,7 @@ public class AddressFinder implements IAddressFinder {
 	}
 
 	public AddressFinder() {
+		this.addressFinder = new ExternalAddressFinderMock();
 	}
 
 	@Override

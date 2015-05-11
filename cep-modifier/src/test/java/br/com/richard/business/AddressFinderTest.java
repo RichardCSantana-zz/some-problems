@@ -46,4 +46,31 @@ public class AddressFinderTest {
 		Address actual = afs.findByCEP("01234567");
 		Assert.assertEquals(expected, actual);
 	}
+
+	@Test
+	public void sixTurnsCase() {
+		final String cep = "01000000";
+		final Address expected = new Address("rua", "bairro", "cidade",
+				"estado", cep);
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		Mockito.when(addressFinder.getAddressByCEP(cep)).thenReturn(expected);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		Address actual = afs.findByCEP("01234567");
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void noAddressFindCase() {
+		IExternalAddressFinder addressFinder = Mockito
+				.mock(IExternalAddressFinder.class);
+		IAddressFinder afs = new AddressFinder(addressFinder);
+		try {
+			Address actual = afs.findByCEP("01234567");
+		} catch (IllegalArgumentException e) {
+			Assert.assertEquals("Nenhum endereço com esse cep foi encontrado",
+					e.getMessage());
+			throw e;
+		}
+	}
 }

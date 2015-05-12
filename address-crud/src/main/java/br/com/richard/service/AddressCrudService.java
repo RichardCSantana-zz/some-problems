@@ -3,18 +3,18 @@
  */
 package br.com.richard.service;
 
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.richard.model.Address;
 import br.com.richard.repository.AddressRepository;
 
 /**
- * @author vrx_rsantana
+ * @author richard
  *
  */
 @Component
-public class AddressCrudService implements IAddressService {
+public class AddressCrudService implements IAddressCrudService {
 
 	@Autowired
 	private AddressRepository repository;
@@ -30,13 +30,18 @@ public class AddressCrudService implements IAddressService {
 	}
 
 	@Override
-	public void edit(Address address) {
-		repository.merge(address);
+	public void edit(Long id, Address address) {
+		repository.save(address);
 	}
 
 	@Override
-	public void findById(Long id) {
-		repository.findById(id);
+	public Address findById(Long id) {
+		return repository.findOne(id);
+	}
+
+	@Override
+	public Iterable<Address> findAll() {
+		return repository.findAll();
 	}
 
 }

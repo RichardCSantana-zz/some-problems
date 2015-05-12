@@ -3,23 +3,26 @@
  */
 package br.com.richard.external;
 
-import org.hibernate.mapping.Map;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import br.com.richard.model.AddressConsumed;
+import br.com.richard.external.model.AddressDTO;
 
 /**
- * @author vrx_rsantana
+ * @author richard
  *
  */
-public class CEPServiceConsumer {
+@Component
+public class CEPServiceConsumer implements ICEPServiceConsumer {
 
-	public AddressConsumed getAddressByCEP(String cep) {
+	/* (non-Javadoc)
+	 * @see br.com.richard.external.ICEPServiceConsumer#getAddressByCEP(java.lang.String)
+	 */
+	@Override
+	public AddressDTO getAddressByCEP(String cep) {
 		RestTemplate restTemplate = new RestTemplate();
-		Map<String, String> cep = new HashMap<>();
-		cep.put("cep", cep);
-		AddressConsumed address = restTemplate.postForObject(
-				"http://localhost:8080/buscacep", AddressConsumed.class, cep);
+		AddressDTO address = restTemplate.postForObject(
+				"http://localhost:8080/buscacep", cep, AddressDTO.class);
 		return address;
 	}
 }

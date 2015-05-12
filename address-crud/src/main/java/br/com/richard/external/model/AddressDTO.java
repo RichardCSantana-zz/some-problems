@@ -1,13 +1,13 @@
 /**
  * 
  */
-package br.com.richard.model;
+package br.com.richard.external.model;
 
 /**
- * @author vrx_rsantana
+ * @author richard
  *
  */
-public class AddressConsumed {
+public class AddressDTO {
 
 	private String street;
 	private String neighborhood;
@@ -15,7 +15,7 @@ public class AddressConsumed {
 	private String state;
 	private String zipcode;
 
-	public Address() {
+	public AddressDTO() {
 	}
 
 	public String getStreet() {

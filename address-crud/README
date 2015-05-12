@@ -1,0 +1,15 @@
+README
+
+Este projeto é um serviço com operações de criação, leitura, atualização e exclusão de dados de endereço com tomcat embutido, para executá-lo:
+ java -jar crud-address-0.0.1-SNAPSHOT.jar
+Lembrando que ele usa o serviço busca cep, portanto esse precisa estar funcionando
+
+O projeto usa o serviço de busca cep para validar o cep - endereço e os ceps que estão "mockados" para os endereços são os seguintes:
+CEP:              Endereço esperado:
+{CEP:"03573120"} | { Rua:"Rua entre-folhas", Bairro:"Jardim Arize", Cidade:"São Paulo", Estado:"SP"));
+{CEP:"69093310"} | { Rua:"Rua São Lucas", Bairro:"Colônia Santo Antônio", Cidade:"Manaus", Estado:"AM"));
+{CEP:"93537050"} | { Rua:"Rua Vereador Carlos Emílio Kolling",Bairro:"São Jorge", Cidade:"Novo Hamburgo", Estado:"RS"));
+{CEP:"24743590"} | { Rua:"Rua Alberto Nemer",Bairro:"Jóquei Clube", Cidade:"São Gonçalo", Estado:"RJ"));
+{CEP:"68901500"} | { Rua:"Avenida dos Navegantes",Bairro:"Santa Inês", Cidade:"Macapá", Estado:"AP"));
+{CEP:"17022480"} | { Rua:"Rua dos Mecânicos",Bairro:"Núcleo Residencial Edison Bastos Gasparini", Cidade:"Bauru", Estado:"SP"));
+{CEP:"68925973"} | { Rua:"Vila do Portuário do Igarapé da Fortaleza, s/n",Bairro:"Central", Cidade:"Santana", Estado:"AP"));

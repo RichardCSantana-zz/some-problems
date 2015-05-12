@@ -13,7 +13,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Address {
+public class Address implements IAddress {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,6 +45,12 @@ public class Address {
 		this.id = id;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.richard.model.IAddress#getStreet()
+	 */
+	@Override
 	public String getStreet() {
 		return street;
 	}
@@ -53,6 +59,12 @@ public class Address {
 		this.street = street;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.richard.model.IAddress#getNeighborhood()
+	 */
+	@Override
 	public String getNeighborhood() {
 		return neighborhood;
 	}
@@ -61,6 +73,12 @@ public class Address {
 		this.neighborhood = neighborhood;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.richard.model.IAddress#getCity()
+	 */
+	@Override
 	public String getCity() {
 		return city;
 	}
@@ -69,6 +87,12 @@ public class Address {
 		this.city = city;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.richard.model.IAddress#getState()
+	 */
+	@Override
 	public String getState() {
 		return state;
 	}
@@ -77,6 +101,12 @@ public class Address {
 		this.state = state;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see br.com.richard.model.IAddress#getZipcode()
+	 */
+	@Override
 	public String getZipcode() {
 		return zipcode;
 	}
@@ -85,4 +115,11 @@ public class Address {
 		this.zipcode = zipcode;
 	}
 
+	public void copyProperties(IAddress address) {
+		this.setCity(address.getCity());
+		this.setNeighborhood(address.getNeighborhood());
+		this.setState(address.getState());
+		this.setStreet(address.getStreet());
+		this.setZipcode(address.getZipcode());
+	}
 }

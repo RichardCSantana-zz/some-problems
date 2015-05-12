@@ -3,11 +3,13 @@
  */
 package br.com.richard.external.model;
 
+import br.com.richard.model.IAddress;
+
 /**
  * @author richard
  *
  */
-public class AddressDTO {
+public class AddressDTO implements IAddress {
 
 	private String street;
 	private String neighborhood;

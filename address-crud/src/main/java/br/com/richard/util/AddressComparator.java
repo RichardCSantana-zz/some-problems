@@ -7,11 +7,18 @@ import br.com.richard.model.IAddress;
 @Component
 public class AddressComparator implements IAddressComparator {
 
-	/* (non-Javadoc)
-	 * @see br.com.richard.util.IAddressComparator#compare(br.com.richard.model.IAddress, br.com.richard.model.IAddress)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * br.com.richard.util.IAddressComparator#compare(br.com.richard.model.IAddress
+	 * , br.com.richard.model.IAddress)
 	 */
 	@Override
 	public boolean compare(IAddress first, IAddress second) {
+		if (first == null || second == null) {
+			return false;
+		}
 		return compareNormalizedStrings(first.getCity(), second.getCity())
 				&& compareNormalizedStrings(first.getNeighborhood(),
 						second.getNeighborhood())
@@ -21,6 +28,9 @@ public class AddressComparator implements IAddressComparator {
 	}
 
 	private boolean compareNormalizedStrings(String first, String second) {
+		if (first == null || second == null) {
+			return false;
+		}
 		return first.trim().equalsIgnoreCase(second.trim());
 	}
 

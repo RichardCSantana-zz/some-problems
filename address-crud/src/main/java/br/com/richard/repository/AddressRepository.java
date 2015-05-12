@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import br.com.richard.model.Address;
 
 /**
- * @author vrx_rsantana
+ * @author richard
  *
  */
 public interface AddressRepository extends CrudRepository<Address, Long> {

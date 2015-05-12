@@ -4,9 +4,11 @@
 package br.com.richard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import br.com.richard.business.IAddressFinder;
 import br.com.richard.model.Address;
@@ -33,6 +35,7 @@ public class AddressFinderService implements IAddressFinderService {
 	}
 
 	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public @ResponseBody String handle(IllegalArgumentException ex) {
 		return ex.getMessage();
 	}

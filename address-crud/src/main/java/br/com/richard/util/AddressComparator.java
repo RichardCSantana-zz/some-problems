@@ -2,8 +2,16 @@ package br.com.richard.util;
 
 import org.springframework.stereotype.Component;
 
+import br.com.richard.model.Address;
 import br.com.richard.model.IAddress;
 
+/**
+ * Classe criada para evitar sobreescrever o método equals do {@link Address}
+ * por se tratar de uma entity
+ * 
+ * @author vrx_rsantana
+ *
+ */
 @Component
 public class AddressComparator implements IAddressComparator {
 

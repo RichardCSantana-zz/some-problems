@@ -6,8 +6,9 @@ package br.com.richard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.richard.business.IAddressCrud;
 import br.com.richard.model.Address;
-import br.com.richard.repository.AddressRepository;
+import br.com.richard.model.IAddress;
 
 /**
  * @author richard
@@ -17,31 +18,31 @@ import br.com.richard.repository.AddressRepository;
 public class AddressCrudService implements IAddressCrudService {
 
 	@Autowired
-	private AddressRepository repository;
+	private IAddressCrud addressCrud;
 
 	@Override
 	public void save(Address address) {
-		repository.save(address);
+		addressCrud.save(address);
 	}
 
 	@Override
 	public void delete(Long id) {
-		repository.delete(id);
+		addressCrud.delete(id);
 	}
 
 	@Override
 	public void edit(Long id, Address address) {
-		repository.save(address);
+		addressCrud.save(address);
 	}
 
 	@Override
-	public Address findById(Long id) {
-		return repository.findOne(id);
+	public IAddress findById(Long id) {
+		return addressCrud.findById(id);
 	}
 
 	@Override
 	public Iterable<Address> findAll() {
-		return repository.findAll();
+		return addressCrud.findAll();
 	}
 
 }

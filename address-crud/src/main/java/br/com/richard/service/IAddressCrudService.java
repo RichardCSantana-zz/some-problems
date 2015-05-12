@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.richard.model.Address;
+import br.com.richard.model.IAddress;
 
 @RestController
 @RequestMapping(value = "/address")
@@ -24,7 +25,7 @@ public interface IAddressCrudService {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	Address findById(@PathVariable Long id);
+	IAddress findById(@PathVariable Long id);
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody

@@ -39,7 +39,6 @@ public class AddressCrudService implements IAddressCrudService {
 
 	@Override
 	public IAddress findById(@PathVariable Long id) {
-		System.out.println(id);
 		return addressCrud.findById(id);
 	}
 

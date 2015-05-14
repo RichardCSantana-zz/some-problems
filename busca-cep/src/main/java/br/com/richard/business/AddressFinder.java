@@ -6,6 +6,8 @@ package br.com.richard.business;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import br.com.richard.external.IExternalAddressFinder;
@@ -18,6 +20,8 @@ import br.com.richard.model.Address;
  */
 @Component
 public class AddressFinder implements IAddressFinder {
+
+	private static final Logger log = LogManager.getLogger(AddressFinder.class);
 
 	private IExternalAddressFinder addressFinder;
 
@@ -32,6 +36,7 @@ public class AddressFinder implements IAddressFinder {
 	@Override
 	public Address findByCEP(String cep) {
 		if (!isValid(cep)) {
+			log.error(String.format("ocorrencia=cep-invalido,cep=", cep));
 			throw new IllegalArgumentException("CEP inválido");
 		}
 		Address result = null;
@@ -47,6 +52,9 @@ public class AddressFinder implements IAddressFinder {
 						"Nenhum endereço com esse cep foi encontrado");
 			}
 		} while (result == null);
+		log.info(String.format(
+				"ocorrencia=encontrado-endereco,cep=%s,endereco=%s", cep,
+				result));
 		return result;
 	}
 

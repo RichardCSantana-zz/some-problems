@@ -17,13 +17,13 @@ public interface IAddressCrudService {
 	@RequestMapping(method = RequestMethod.POST)
 	void save(@RequestBody Address address);
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	void delete(@PathVariable Long id);
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	void edit(@PathVariable Long id, @RequestBody Address address);
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	IAddress findById(@PathVariable Long id);
 

@@ -13,3 +13,5 @@ CEP:              Endereço esperado:
 {CEP:"68901500"} | { Rua:"Avenida dos Navegantes",Bairro:"Santa Inês", Cidade:"Macapá", Estado:"AP"));
 {CEP:"17022480"} | { Rua:"Rua dos Mecânicos",Bairro:"Núcleo Residencial Edison Bastos Gasparini", Cidade:"Bauru", Estado:"SP"));
 {CEP:"68925973"} | { Rua:"Vila do Portuário do Igarapé da Fortaleza, s/n",Bairro:"Central", Cidade:"Santana", Estado:"AP"));
+
+O sistema gera um log em ./logs

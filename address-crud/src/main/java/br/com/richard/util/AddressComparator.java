@@ -28,8 +28,6 @@ public class AddressComparator implements IAddressComparator {
 			return false;
 		}
 		return compareNormalizedStrings(first.getCity(), second.getCity())
-				&& compareNormalizedStrings(first.getNeighborhood(),
-						second.getNeighborhood())
 				&& compareNormalizedStrings(first.getState(), second.getState())
 				&& compareNormalizedStrings(first.getStreet(),
 						second.getStreet());

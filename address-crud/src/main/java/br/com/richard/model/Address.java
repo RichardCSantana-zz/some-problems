@@ -3,6 +3,7 @@
  */
 package br.com.richard.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,17 @@ public class Address implements IAddress {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(nullable = false)
 	private String street;
+	@Column(nullable = false)
+	private Integer number;
+	private String apartmentNumber;
 	private String neighborhood;
+	@Column(nullable = false)
 	private String city;
+	@Column(nullable = false)
 	private String state;
+	@Column(nullable = false)
 	private String zipcode;
 
 	public Address() {
@@ -29,12 +37,14 @@ public class Address implements IAddress {
 	}
 
 	public Address(String street, String neighborhood, String city,
-			String state, String zipcode) {
+			String state, String zipcode, String apartmentNumber, Integer number) {
 		this.street = street;
 		this.neighborhood = neighborhood;
 		this.city = city;
 		this.state = state;
 		this.zipcode = zipcode;
+		this.number = number;
+		this.apartmentNumber = apartmentNumber;
 	}
 
 	public Long getId() {
@@ -115,12 +125,30 @@ public class Address implements IAddress {
 		this.zipcode = zipcode;
 	}
 
-	public void copyProperties(IAddress address) {
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public String getApartmentNumber() {
+		return apartmentNumber;
+	}
+
+	public void setApartmentNumber(String apartmentNumber) {
+		this.apartmentNumber = apartmentNumber;
+	}
+
+	public void copyProperties(Address address) {
 		this.setCity(address.getCity());
 		this.setNeighborhood(address.getNeighborhood());
 		this.setState(address.getState());
 		this.setStreet(address.getStreet());
 		this.setZipcode(address.getZipcode());
+		this.setApartmentNumber(address.getApartmentNumber());
+		this.setNumber(address.getNumber());
 	}
 
 	@Override

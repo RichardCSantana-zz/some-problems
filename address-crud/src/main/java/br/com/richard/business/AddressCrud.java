@@ -48,7 +48,7 @@ public class AddressCrud implements IAddressCrud {
 	}
 
 	@Override
-	public void edit(Long id, IAddress address) {
+	public void edit(Long id, Address address) {
 		log.info(String.format(
 				"ocorrencia=editando-endereco,id=%s,endereco-atualizado=%s",
 				id, address));

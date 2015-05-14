@@ -19,7 +19,7 @@ public interface IAddressCrud {
 
 	void delete(Long id);
 
-	void edit(Long id, IAddress address);
+	void edit(Long id, Address address);
 
 	IAddress findById(Long id);
 

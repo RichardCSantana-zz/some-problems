@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" packages="br.com.richard">
+	<Appenders>
+		<RollingFile name="applicationAppender" fileName="logs/crud-address.log"
+			filePattern="logs/$${date:yyyy-MM}/crud-address-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+
+		<RollingFile name="springAppender" fileName="logs/spring.log"
+			filePattern="logs/$${date:yyyy-MM}/spring-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+
+	</Appenders>
+
+	<Loggers>
+		<Logger name="br.com.richard" level="INFO" additivity="false">
+			<AppenderRef ref="applicationAppender" />
+		</Logger>
+
+		<Logger name="org.springframework" level="WARN" additivity="false">
+			<AppenderRef ref="springAppender" />
+		</Logger>
+
+		<Root level="error">
+			<AppenderRef ref="applicationAppender" />
+		</Root>
+
+	</Loggers>
+
+</Configuration>
